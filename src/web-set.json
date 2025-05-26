@@ -46,17 +46,7 @@
           "params": {
             "query": "Masukkan Query yang ingin dicari"
           }
-        },
-        {
-          "name": "Github Search",
-          "desc": "Github Search Maksimal 5 pencarian",
-          "path": "/search/githubsearch?q=",
-          "status": "ready",
-          "requireKey": false,
-          "params": {
-            "Github Search Contoh": "Baileys"
-          }
-        }
+        }        
       ]
     },
     {
