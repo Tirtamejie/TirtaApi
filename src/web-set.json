@@ -7,8 +7,8 @@
     "status": "Online!"
   },
   "apiSettings": {
-    "creator": "Tirta - Anomaki",
-    "globalKey": ["yo"],
+    "creator": "Tirta",
+    "globalKey": ["Tirta"],
     "defaultRequireKey": true
   },
   "categories": [
