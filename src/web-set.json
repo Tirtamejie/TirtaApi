@@ -8,11 +8,13 @@
   },
   "apiSettings": {
     "creator": "Tirta",
-    "globalKey": ["Tirta"],
+    "globalKey": [
+      "Tirta"
+    ],
     "defaultRequireKey": true
   },
   "categories": [
-     {
+    {
       "name": "Search",
       "items": [
         {
@@ -44,7 +46,17 @@
           "params": {
             "query": "Masukkan Query yang ingin dicari"
           }
-        }        
+        },
+        {
+          "name": "Github Search",
+          "desc": "Github Search Maksimal 5 pencarian",
+          "path": "/search/githubsearch?q=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "Github Search Contoh": "Baileys"
+          }
+        }
       ]
     },
     {
@@ -109,7 +121,7 @@
           "params": {
             "url": "url dari youtube"
           }
-        }                
+        }
       ]
     },
     {
@@ -149,7 +161,7 @@
           "params": {
             "text": "Teks puisi mu."
           }
-        },        
+        },
         {
           "name": "LuminAI",
           "desc": "Chat dengan LuminAI",
@@ -169,7 +181,7 @@
           "params": {
             "prompt": "Prompt untuk Buat gambar."
           }
-        }       
+        }
       ]
     },
     {
