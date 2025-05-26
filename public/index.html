@@ -1,0 +1,1311 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Tirta Apis - Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda">
+    <meta name="keywords" content="API, Rest API, Tirta, Developer Tools, Free API">
+    <meta name="author" content="Tirta Team">
+
+   <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:url" content="https://www.apis-Tirta.zone.id"> <!-- Ganti dengan URL sebenarnya -->
+   <meta property="og:type" content="website">
+
+    <meta property="og:title" content="Tirta Apis">
+    <meta property="og:description" content="Koleksi API gratis">
+    <meta property="og:type" content="website">
+    <title>Tirta Apis | API Gratis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Modern Clean Theme - Light */
+            --bg-light: #f4f7f6;
+            --text-light: #333;
+            --text-secondary-light: #666;
+            --primary-light: #007bff; /* Biru utama */
+            --accent-light: #28a745; /* Hijau untuk sukses */
+            --card-bg-light: #fff;
+            --border-light: #ddd;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+
+            /* Modern Clean Theme - Dark */
+            --bg-dark: #1a202c;
+            --text-dark: #e2e8f0;
+            --text-secondary-dark: #a0aec0;
+            --primary-dark: #63b3ed; /* Biru yang lebih terang untuk gelap */
+            --accent-dark: #48bb78; /* Hijau yang lebih terang */
+            --card-bg-dark: #2d3748;
+            --border-dark: #4a5568;
+            --shadow-dark: rgba(0, 0, 0, 0.3);
+
+            /* Default Theme */
+            --bg: var(--bg-light);
+            --text: var(--text-light);
+            --text-secondary: var(--text-secondary-light);
+            --primary: var(--primary-light);
+            --accent: var(--accent-light);
+            --card-bg: var(--card-bg-light);
+            --border: var(--border-light);
+            --shadow: var(--shadow-light);
+
+            --spacing-sm: 10px;
+            --spacing-md: 15px;
+            --spacing-lg: 20px;
+            --border-radius: 8px;
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--bg-dark);
+            --text: var(--text-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --primary: var(--primary-dark);
+            --accent: var(--accent-dark);
+            --card-bg: var(--card-bg-dark);
+            --border: var(--border-dark);
+            --shadow: var(--shadow-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px var(--spacing-lg);
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px var(--shadow);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .theme-toggle {
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+            color: var(--text);
+            background-color: transparent; /* Transparan */
+            border-radius: var(--border-radius);
+            transition: all 0.2s ease;
+        }
+         .theme-toggle:hover {
+            background-color: rgba(0,0,0,0.05); /* Subtle hover effect */
+         }
+         [data-theme="dark"] .theme-toggle:hover {
+             background-color: rgba(255,255,255,0.1);
+         }
+
+
+        .status {
+            display: inline-block;
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
+            color: var(--text-secondary); /* Default color */
+            background-color: rgba(128, 128, 128, 0.1); /* Subtle background */
+            border-radius: var(--border-radius);
+        }
+        .status.ready { color: #28a745; background-color: rgba(40, 167, 69, 0.1); }
+        .status.update { color: #ffc107; background-color: rgba(255, 193, 7, 0.1); }
+        .status.offline { color: #dc3545; background-color: rgba(220, 53, 69, 0.1); }
+        .status.maintenance { color: #fd7e14; background-color: rgba(253, 126, 20, 0.1); }
+        .status.error { color: #dc3545; background-color: rgba(220, 53, 69, 0.1); }
+
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            padding: 0;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .controls-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px var(--shadow);
+            align-items: center;
+             transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .control-group label {
+            font-weight: 500;
+            color: var(--text);
+             font-size: 0.95rem;
+        }
+
+        select, input[type="text"] {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            background-color: var(--bg); /* Input background different from controls area */
+            color: var(--text);
+            font-size: 0.95rem;
+             transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus ring */
+        }
+        [data-theme="dark"] select:focus, [data-theme="dark"] input[type="text"]:focus {
+             box-shadow: 0 0 0 0.2rem rgba(99, 179, 237, 0.25);
+        }
+
+        .view-mode-toggle button {
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            background-color: var(--bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+         .view-mode-toggle button.active {
+            background-color: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+         }
+         .view-mode-toggle button:hover:not(.active) {
+             background-color: rgba(0,0,0,0.05);
+             color: var(--text);
+         }
+          [data-theme="dark"] .view-mode-toggle button:hover:not(.active) {
+             background-color: rgba(255,255,255,0.1);
+             color: var(--text);
+         }
+
+
+        .categories-container {
+            /* Base styles handled by JS adding is-grid or is-list */
+        }
+
+        .categories-container.is-grid .category {
+            /* When in grid mode, categories still separate, but items are grid */
+        }
+
+        .categories-container.is-list .category {
+             /* When in list mode, maybe remove category titles or make them subtle */
+             /* Or just list all items flatly? Let's keep categories for structure initially */
+        }
+
+        .category {
+            margin-bottom: 40px;
+            opacity: 0; /* Keep fade-in effect */
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .categories-container.is-list .category-title {
+             /* Hide category titles in list mode or make them visually distinct */
+             /* display: none; */ /* Opsi 1: Sembunyikan */
+             font-size: 1.5rem; /* Opsi 2: Kecilkan */
+             margin-bottom: 10px;
+             padding-bottom: 5px;
+             border-bottom: 1px dashed var(--border);
+             color: var(--text-secondary);
+        }
+
+
+        /* API Card Layouts */
+        .categories-container.is-grid .api-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .categories-container.is-list .api-items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md); /* Smaller gap in list mode */
+        }
+
+        .api-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 2px 5px var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .api-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+
+        .api-name {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            font-weight: 600;
+            gap: var(--spacing-sm);
+        }
+
+        .api-desc {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+        }
+
+        .api-path-container {
+            position: relative;
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background-color: var(--bg); /* Path container background */
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--bg);
+            -webkit-overflow-scrolling: touch;
+             transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .api-path-container::-webkit-scrollbar { height: 8px; }
+        .api-path-container::-webkit-scrollbar-track { background: transparent; }
+        .api-path-container::-webkit-scrollbar-thumb { background-color: var(--primary); border-radius: 4px; }
+
+
+        .api-path {
+            padding: 0 var(--spacing-lg) 0 var(--spacing-sm); /* Padding right for button */
+            font-family: 'Courier New', Courier, monospace;
+            display: inline-block;
+            white-space: nowrap;
+            min-width: 100%;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+            color: var(--text);
+            background-color: transparent;
+        }
+
+        .copy-path-btn {
+            position: absolute;
+            right: var(--spacing-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+        .copy-path-btn:hover { color: var(--text); }
+
+
+        .api-status-badge { /* Renamed for clarity */
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: var(--spacing-sm); /* Space from next badge/element */
+        }
+
+        .status-ready { background-color: #d4edda; color: #155724; } /* Bootstrap green light */
+        .status-update { background-color: #fff3cd; color: #856404; } /* Bootstrap yellow light */
+        .status-offline { background-color: #f8d7da; color: #721c24; } /* Bootstrap red light */
+        .status-maintenance { background-color: #ffeeba; color: #664d03; } /* Bootstrap orange like */
+        .status-error { background-color: #f8d7da; color: #721c24; } /* Bootstrap red light */
+        
+        [data-theme="dark"] .status-ready { background-color: #1f4a2e; color: #82e39d; }
+        [data-theme="dark"] .status-update { background-color: #4e4526; color: #f7d68f; }
+        [data-theme="dark"] .status-offline { background-color: #5b252a; color: #f1a5ac; }
+         [data-theme="dark"] .status-maintenance { background-color: #6d451b; color: #f7c081; }
+        [data-theme="dark"] .status-error { background-color: #5b252a; color: #f1a5ac; }
+
+
+        .api-key-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 500;
+             background-color: #cce5ff; /* Bootstrap blue light */
+             color: #004085;
+        }
+        .api-key-badge.public {
+             background-color: #d4edda; /* Bootstrap green light */
+             color: #155724;
+        }
+         [data-theme="dark"] .api-key-badge {
+             background-color: #1e3a5c; color: #90cdf4;
+         }
+          [data-theme="dark"] .api-key-badge.public {
+             background-color: #1f4a2e; color: #82e39d;
+         }
+
+
+        .param-title {
+            font-size: 0.95rem;
+            margin: var(--spacing-md) 0 var(--spacing-sm);
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .param-list {
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-md);
+            border-left: 2px solid var(--border);
+        }
+
+        .param-item {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            word-break: break-word;
+        }
+
+        .param-name {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .try-btn, .execute-btn, .copy-btn, .button { /* Generic button style */
+            color: #fff;
+            background-color: var(--primary);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: var(--border-radius);
+        }
+        .try-btn:hover, .execute-btn:hover, .copy-btn:hover, .button:hover {
+            opacity: 0.9;
+        }
+         .try-btn:active, .execute-btn:active, .copy-btn:active, .button:active {
+            transform: scale(0.98);
+         }
+
+        .try-btn { width: 100%; margin-top: var(--spacing-md); }
+
+        .try-btn.disabled {
+            background-color: #6c757d; /* Grey for disabled */
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        .try-btn.disabled:hover { opacity: 0.8; } /* No opacity change on hover for disabled */
+        .try-btn.disabled:active { transform: none; }
+
+
+        .try-container {
+            margin-top: var(--spacing-lg);
+            display: none;
+            padding: var(--spacing-lg);
+            background-color: var(--bg); /* Try container background */
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border);
+        }
+
+        .input-group { margin-bottom: var(--spacing-md); }
+        .input-group label { display: block; margin-bottom: var(--spacing-sm); font-weight: 600; font-size: 0.9rem; color: var(--text-secondary); }
+
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-lg);
+            backdrop-filter: blur(5px); /* Optional blur effect */
+        }
+
+        .popup-content {
+            background-color: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            max-width: 95%;
+            width: 800px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px var(--shadow);
+             transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .popup-title { font-size: 1.6rem; color: var(--primary); font-weight: 600; }
+
+        .close-popup {
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
+            border-radius: 50%; /* Make it circular */
+        }
+        .close-popup:hover {
+             color: var(--text);
+             background-color: rgba(128,128,128,0.1);
+        }
+
+
+        .popup-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            background-color: var(--bg); /* Body popup background */
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border);
+             transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .result-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .popup-footer { display: flex; justify-content: flex-end; }
+        .copy-btn { margin-left: var(--spacing-sm); }
+
+
+        .loading {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--border);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 0.8s linear infinite;
+            margin-right: var(--spacing-sm);
+        }
+
+        .error-message {
+            color: #721c24; /* Dark red */
+            background-color: #f8d7da; /* Light red */
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-md);
+            border: 1px solid #f5c6cb; /* Slightly darker red border */
+        }
+        [data-theme="dark"] .error-message {
+             color: #f1a5ac; background-color: #5b252a; border-color: #721c24;
+        }
+        .error-message i { margin-right: 8px; }
+
+
+        .status-notification {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--accent);
+            color: white;
+            border-radius: var(--border-radius);
+            z-index: 1001;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+            max-width: 90%;
+            box-shadow: 0 2px 5px var(--shadow);
+            animation: slideInUp 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+        }
+        .status-notification.error {
+            background-color: #dc3545; /* Red */
+        }
+
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes slideInUp {
+            from { transform: translate(-50%, 50px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .category-title { font-size: 1.6rem; }
+            .api-items.is-grid { grid-template-columns: 1fr; gap: var(--spacing-md); }
+            .container { padding: var(--spacing-md); }
+            header { padding: 30px var(--spacing-md); }
+            .controls-area { flex-direction: column; align-items: stretch; gap: var(--spacing-sm); }
+            .control-group { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .control-group label { margin-bottom: 0; }
+            select, input[type="text"] { width: 100%; }
+            .view-mode-toggle { align-self: flex-end; } /* Put view toggle on the right */
+            .popup-content { width: 95%; padding: var(--spacing-md); }
+            .popup-title { font-size: 1.3rem; }
+            .status-notification { width: calc(100% - 30px); bottom: var(--spacing-md); }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .api-name { font-size: 1.2rem; flex-direction: column; align-items: flex-start; }
+            .api-name .api-key-badge { margin-top: 5px; }
+            .try-btn, .execute-btn { padding: var(--spacing-sm) var(--spacing-md); font-size: 0.9rem; }
+            .popup-title { font-size: 1.3rem; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1 id="api-name">Tirta Apis</h1>
+                <div class="status" id="api-status">Status</div>
+                <p class="description" id="api-description">Deskripsi singkat API.</p>
+            </div>
+             <button class="theme-toggle" id="themeToggle">🌙 Mode Gelap</button>
+        </header>
+
+        <div class="controls-area">
+             <div class="control-group search-input-group">
+                 <label for="searchInput"><i class="fas fa-search"></i> Cari:</label>
+                 <input type="text" id="searchInput" placeholder="Nama atau deskripsi">
+             </div>
+
+             <div class="control-group filter-group">
+                 <label for="filterCategory"><i class="fas fa-filter"></i> Filter Kategori:</label>
+                 <select id="filterCategory">
+                     <option value="">Semua Kategori</option>
+                     <!-- Options will be populated by JS -->
+                 </select>
+             </div>
+
+             <div class="control-group filter-group">
+                 <label for="filterStatus"><i class="fas fa-filter"></i> Filter Status:</label>
+                 <select id="filterStatus">
+                     <option value="">Semua Status</option>
+                     <option value="ready">Ready</option>
+                     <option value="update">Update</option>
+                     <option value="offline">Offline</option>
+                     <option value="maintenance">Maintenance</option>
+                     <option value="error">Error</option>
+                 </select>
+             </div>
+
+             <div class="control-group filter-group">
+                 <label for="filterKey"><i class="fas fa-key"></i> Butuh API Key:</label>
+                 <select id="filterKey">
+                     <option value="">Semua</option>
+                     <option value="true">Ya</option>
+                     <option value="false">Tidak</option>
+                 </select>
+             </div>
+
+             <div class="control-group sort-group">
+                 <label for="sortBy"><i class="fas fa-sort"></i> Urutkan:</label>
+                 <select id="sortBy">
+                     <option value="name-asc">Nama (A-Z)</option>
+                     <option value="name-desc">Nama (Z-A)</option>
+                 </select>
+             </div>
+
+             <div class="control-group view-mode-toggle">
+                 <label><i class="fas fa-grip-horizontal"></i> Tampilan:</label>
+                 <button data-view="grid" class="button active" title="Tampilan Grid"><i class="fas fa-th-large"></i></button>
+                 <button data-view="list" class="button" title="Tampilan Daftar"><i class="fas fa-list"></i></button>
+             </div>
+        </div>
+
+        <div id="categories-container" class="categories-container is-grid"></div> <!-- Default to grid -->
+
+        <footer>
+            <p>Dibuat dengan ❤ oleh <span id="api-creator">Tirta Apis</span></p>
+            <p>Versi <span id="api-version">v1.0</span></p>
+        </footer>
+    </div>
+
+    <div class="popup" id="apiPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 class="popup-title" id="popupTitle">Hasil API</h2>
+                <button class="close-popup" id="closePopup">&times;</button>
+            </div>
+            <div class="popup-body" id="popupBody">
+                </div>
+            <div class="popup-footer">
+                <button class="copy-btn" id="copyResultBtn">
+                    <i class="fas fa-copy"></i> Salin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-notification" id="statusNotification"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Theme Toggle ---
+            const themeToggle = document.getElementById('themeToggle');
+            let currentTheme = localStorage.getItem('theme');
+            if (!currentTheme) {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    currentTheme = 'dark';
+                } else {
+                    currentTheme = 'light';
+                }
+            }
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeToggle.textContent = currentTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+
+            themeToggle.addEventListener('click', function() {
+                const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeToggle.textContent = newTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+                this.blur();
+            });
+
+            // --- DOM Elements ---
+            const apiPopup = document.getElementById('apiPopup');
+            const closePopup = document.getElementById('closePopup');
+            const popupBody = document.getElementById('popupBody');
+            const popupTitle = document.getElementById('popupTitle');
+            const copyResultBtn = document.getElementById('copyResultBtn');
+            const statusNotification = document.getElementById('statusNotification');
+            const searchInput = document.getElementById('searchInput');
+            const filterCategory = document.getElementById('filterCategory');
+            const filterStatus = document.getElementById('filterStatus');
+            const filterKey = document.getElementById('filterKey');
+            const sortBy = document.getElementById('sortBy');
+            const viewModeButtons = document.querySelectorAll('.view-mode-toggle button');
+            const categoriesContainer = document.getElementById('categories-container');
+
+            let originalApiData = []; // Store the full original data
+
+            // --- Event Listeners ---
+            closePopup.addEventListener('click', function() {
+                apiPopup.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(e) {
+                if (e.target === apiPopup) {
+                    apiPopup.style.display = 'none';
+                }
+            });
+
+            // Add listeners for filtering and sorting controls
+            searchInput.addEventListener('input', debounce(filterAndSortApis, 300));
+            filterCategory.addEventListener('change', filterAndSortApis);
+            filterStatus.addEventListener('change', filterAndSortApis);
+            filterKey.addEventListener('change', filterAndSortApis);
+            sortBy.addEventListener('change', filterAndSortApis);
+
+            // Add listeners for view mode buttons
+            viewModeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const mode = this.dataset.view;
+                    updateViewMode(mode);
+                    filterAndSortApis(); // Re-render with new mode
+                });
+            });
+
+            // Load initial data
+            loadApiData();
+
+            // Scroll visibility effect
+            window.addEventListener('scroll', debounce(checkVisibility, 100));
+
+
+            // --- Helper Functions ---
+            function showStatusNotification(message, type = 'info') {
+                statusNotification.textContent = message;
+                statusNotification.className = 'status-notification'; // Reset classes
+                if (type === 'error') {
+                    statusNotification.classList.add('error');
+                }
+                statusNotification.style.display = 'block';
+                // CSS handles the animation timing
+            }
+
+            function debounce(func, wait) {
+                let timeout;
+                return function(...args) {
+                    const context = this;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(context, args), wait);
+                };
+            }
+
+             function checkVisibility() {
+                const categories = document.querySelectorAll('.category');
+                categories.forEach(category => {
+                    const rect = category.getBoundingClientRect();
+                    // Check if any part of the category is visible
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        category.classList.add('visible');
+                    } else {
+                         // Optional: remove visible class if scrolled away for re-triggering
+                         // category.classList.remove('visible');
+                    }
+                });
+            }
+
+            // --- Data Loading and Initial Display ---
+            async function loadApiData() {
+                try {
+                    const response = await fetch('src/web-set.json');
+                    if (!response.ok) {
+                        throw new Error(`Gagal memuat data: ${response.status} ${response.statusText}`);
+                    }
+                    const data = await response.json();
+
+                    // Store original data structure
+                    originalApiData = data;
+
+                    // Update header/footer info
+                    document.getElementById('api-name').textContent = data.name || "Tirta Apis";
+                    const apiStatusElement = document.getElementById('api-status');
+                    const headerStatus = (data.header?.status || "Online").toLowerCase();
+                    apiStatusElement.textContent = headerStatus.charAt(0).toUpperCase() + headerStatus.slice(1);
+                    apiStatusElement.className = `status ${headerStatus}`;
+                    document.getElementById('api-description').textContent = data.description || "Simple Rest Api.";
+                    document.getElementById('api-creator').textContent = data.apiSettings?.creator || "Tirta Apis";
+                    document.getElementById('api-version').textContent = data.version || "v1.0";
+
+                    // Populate category filter dropdown
+                    populateFilterCategory(data.categories);
+
+                    // Set initial view mode from localStorage or default to grid
+                    const savedViewMode = localStorage.getItem('viewMode') || 'grid';
+                    updateViewMode(savedViewMode); // Apply saved or default mode
+
+                    // Initial display after loading
+                    filterAndSortApis(); // This will now handle the initial rendering
+                    checkVisibility(); // Trigger initial visibility check
+
+                } catch (error) {
+                    console.error('Error memuat data API:', error);
+                    const errorElement = document.createElement('div');
+                    errorElement.className = 'api-card'; // Use generic card style for error
+                    errorElement.style.backgroundColor = 'var(--bg)'; // Use base background
+                    errorElement.style.color = 'var(--text-secondary)';
+                    errorElement.style.padding = '20px';
+                    errorElement.style.border = `1px solid var(--border)`;
+                    errorElement.style.boxShadow = `0 2px 5px var(--shadow)`;
+                    errorElement.innerHTML = `<strong>Error:</strong> Gagal memuat data API. <br><small>${error.message}</small><br><small>Pastikan file 'src/web-set.json' ada dan dapat diakses.</small>`;
+                    categoriesContainer.appendChild(errorElement);
+                }
+            }
+
+            function populateFilterCategory(categories) {
+                filterCategory.innerHTML = '<option value="">Semua Kategori</option>'; // Reset
+                categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category.name.toLowerCase();
+                    option.textContent = category.name;
+                    filterCategory.appendChild(option);
+                });
+            }
+
+            // --- Filtering and Sorting Logic ---
+            function filterAndSortApis() {
+                if (!originalApiData || !originalApiData.categories) return;
+
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const selectedCategory = filterCategory.value;
+                const selectedStatus = filterStatus.value;
+                const selectedKey = filterKey.value;
+                const sortOption = sortBy.value;
+                const currentViewMode = categoriesContainer.classList.contains('is-list') ? 'list' : 'grid';
+
+
+                // Flatten all items from all categories into a single array for easier filtering/sorting
+                let allItems = originalApiData.categories.flatMap(category =>
+                     category.items.map(item => ({ ...item, categoryName: category.name.toLowerCase() }))
+                );
+
+                // Apply Filters
+                let filteredItems = allItems.filter(item => {
+                    const name = item.name.toLowerCase();
+                    const desc = item.desc.toLowerCase();
+                    const itemStatus = item.status.toLowerCase();
+                    const itemRequireKey = item.requireKey ? 'true' : 'false';
+
+                    const matchesSearch = name.includes(searchTerm) || desc.includes(searchTerm);
+                    const matchesCategory = selectedCategory === '' || item.categoryName === selectedCategory;
+                    const matchesStatus = selectedStatus === '' || itemStatus === selectedStatus;
+                    const matchesKey = selectedKey === '' || itemRequireKey === selectedKey;
+
+                    return matchesSearch && matchesCategory && matchesStatus && matchesKey;
+                });
+
+                // Apply Sorting
+                filteredItems.sort((a, b) => {
+                    const nameA = a.name.toLowerCase();
+                    const nameB = b.name.toLowerCase();
+                    if (sortOption === 'name-asc') {
+                        return nameA.localeCompare(nameB);
+                    } else { // name-desc
+                        return nameB.localeCompare(nameA);
+                    }
+                });
+
+                // Re-group filtered and sorted items by category if needed for display
+                // Or simply display them based on the current view mode
+                displayApis(filteredItems, currentViewMode);
+                checkVisibility(); // Trigger visibility check after display update
+            }
+
+            // --- Display Logic ---
+            function displayApis(itemsToDisplay, viewMode) {
+                categoriesContainer.innerHTML = ''; // Clear current display
+
+                 // Group items back by category for display, even in list mode to show category titles
+                 const groupedItems = itemsToDisplay.reduce((acc, item) => {
+                    const categoryName = item.categoryName; // We added categoryName during flattening
+                    if (!acc[categoryName]) {
+                        acc[categoryName] = { name: originalApiData.categories.find(cat => cat.name.toLowerCase() === categoryName)?.name || categoryName, items: [] };
+                    }
+                    acc[categoryName].items.push(item);
+                    return acc;
+                 }, {});
+
+                 // Sort categories by name for consistent display
+                 const sortedCategories = Object.values(groupedItems).sort((a, b) => a.name.localeCompare(b.name));
+
+
+                if (itemsToDisplay.length === 0) {
+                     categoriesContainer.innerHTML = '<p style="text-align:center; color: var(--text-secondary); margin-top: 40px;">Tidak ada API yang cocok dengan kriteria.</p>';
+                     return;
+                }
+
+                sortedCategories.forEach(category => {
+                     const categoryElement = document.createElement('div');
+                     categoryElement.className = 'category';
+                     categoryElement.dataset.category = category.name.toLowerCase();
+
+                     const categoryTitle = document.createElement('h2');
+                     categoryTitle.className = 'category-title';
+                     categoryTitle.textContent = category.name;
+
+                     const apiItemsContainer = document.createElement('div');
+                     apiItemsContainer.className = 'api-items'; // Container for the cards within a category
+
+                     // Apply grid/list class to the items container
+                     apiItemsContainer.classList.add(viewMode === 'grid' ? 'is-grid' : 'is-list');
+
+                     category.items.forEach(item => {
+                         const apiCard = document.createElement('div');
+                         apiCard.className = 'api-card';
+                         // No need for dataset search attributes here, filtering happens before display
+
+                         const apiName = document.createElement('h3');
+                         apiName.className = 'api-name';
+                         apiName.textContent = item.name;
+
+                         const apiKeyBadge = document.createElement('span');
+                         apiKeyBadge.className = `api-key-badge ${item.requireKey ? '' : 'public'}`;
+                         apiKeyBadge.textContent = item.requireKey ? 'Butuh Key' : 'Publik';
+                         apiName.appendChild(apiKeyBadge);
+
+                         const apiDesc = document.createElement('p');
+                         apiDesc.className = 'api-desc';
+                         apiDesc.textContent = item.desc;
+
+                         const apiPathContainer = document.createElement('div');
+                         apiPathContainer.className = 'api-path-container';
+
+                         const apiPath = document.createElement('code');
+                         apiPath.className = 'api-path';
+                         apiPath.textContent = item.path;
+
+                         const copyPathBtn = document.createElement('button');
+                         copyPathBtn.className = 'copy-path-btn';
+                         copyPathBtn.title = 'Salin endpoint';
+                         copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                         copyPathBtn.addEventListener('click', function(event) {
+                             event.stopPropagation();
+                             navigator.clipboard.writeText(item.path).then(function() {
+                                 copyPathBtn.innerHTML = '<i class="fas fa-check"></i>';
+                                 setTimeout(function() {
+                                     copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                                 }, 2000);
+                             }).catch(err => {
+                                 console.error('Gagal menyalin:', err);
+                                 showStatusNotification('Gagal menyalin endpoint.', 'error');
+                             });
+                         });
+
+                         apiPathContainer.appendChild(apiPath);
+                         apiPathContainer.appendChild(copyPathBtn);
+
+                         const apiStatus = document.createElement('span');
+                         apiStatus.className = `api-status-badge status-${item.status.toLowerCase()}`;
+
+                         const statusIcon = document.createElement('i');
+                         let statusText = item.status.charAt(0).toUpperCase() + item.status.slice(1);
+
+                         switch(item.status.toLowerCase()) {
+                             case 'ready': statusIcon.className = 'fas fa-circle-check'; statusText = 'Online'; break;
+                             case 'update': statusIcon.className = 'fas fa-circle-notch fa-spin'; statusText = 'Update'; break;
+                             case 'offline': statusIcon.className = 'fas fa-circle-xmark'; statusText = 'Offline'; break;
+                             case 'maintenance': statusIcon.className = 'fas fa-tools'; statusText = 'Maintenance'; break;
+                             case 'error': statusIcon.className = 'fas fa-circle-exclamation'; statusText = 'Error'; break;
+                             default: statusIcon.className = 'fas fa-circle'; statusText = item.status;
+                         }
+
+                         apiStatus.appendChild(statusIcon);
+                         apiStatus.appendChild(document.createTextNode(' ' + statusText));
+
+                         // Combine status and key badges into a single row/div if needed for layout control
+                         const badgesContainer = document.createElement('div');
+                         badgesContainer.style.marginBottom = var('--spacing-md'); // Space below badges
+                         badgesContainer.append(apiStatus, apiKeyBadge.cloneNode(true)); // Append cloned badge
+
+
+                         apiCard.append(apiName, apiDesc, apiPathContainer, badgesContainer); // Add badges container
+
+
+                         if (item.params && Object.keys(item.params).length > 0) {
+                             const paramTitle = document.createElement('p');
+                             paramTitle.className = 'param-title';
+                             paramTitle.textContent = 'Parameter:';
+
+                             const paramList = document.createElement('div');
+                             paramList.className = 'param-list';
+
+                             Object.entries(item.params).forEach(([key, desc]) => {
+                                 const paramItem = document.createElement('div');
+                                 paramItem.className = 'param-item';
+                                 paramItem.innerHTML = `<span class="param-name">${key}</span>: ${desc}`;
+                                 paramList.appendChild(paramItem);
+                             });
+                             apiCard.append(paramTitle, paramList);
+                         }
+
+                         const tryBtn = document.createElement('button');
+                         tryBtn.className = 'try-btn';
+                         tryBtn.textContent = 'Coba Sekarang';
+
+                         if (item.status.toLowerCase() !== 'ready') {
+                             tryBtn.classList.add('disabled');
+                             tryBtn.title = `Endpoint ini sedang ${statusText.toLowerCase()}`;
+                             tryBtn.addEventListener('click', function() {
+                                 showStatusNotification(`Endpoint ini sedang ${statusText.toLowerCase()}!`, 'error');
+                             });
+                         } else {
+                             tryBtn.addEventListener('click', function() {
+                                 toggleTryContainer(apiCard, item);
+                             });
+                         }
+
+                         apiCard.appendChild(tryBtn);
+                         apiItemsContainer.appendChild(apiCard); // Append card to items container
+                     });
+
+                     categoryElement.append(categoryTitle, apiItemsContainer); // Append title and items container to category
+                     categoriesContainer.appendChild(categoryElement); // Append category to main container
+                });
+
+            }
+
+
+            // --- View Mode Logic ---
+            function updateViewMode(mode) {
+                categoriesContainer.classList.remove('is-grid', 'is-list');
+                categoriesContainer.classList.add(`is-${mode}`);
+
+                viewModeButtons.forEach(button => {
+                    if (button.dataset.view === mode) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+
+                // Save view mode to localStorage
+                localStorage.setItem('viewMode', mode);
+            }
+
+
+            // --- Try API Logic ---
+            function toggleTryContainer(apiCard, item) {
+                let tryContainer = apiCard.querySelector('.try-container');
+
+                if (!tryContainer) {
+                    tryContainer = createTryContainer(item);
+                    apiCard.appendChild(tryContainer);
+                }
+
+                // Toggle display, and remove other open try-containers
+                const allTryContainers = document.querySelectorAll('.try-container');
+                allTryContainers.forEach(container => {
+                    if (container !== tryContainer) {
+                        container.style.display = 'none';
+                    }
+                });
+
+                tryContainer.style.display = tryContainer.style.display === 'none' || !tryContainer.style.display ? 'block' : 'none';
+            }
+
+            function createTryContainer(item) {
+                const tryContainer = document.createElement('div');
+                tryContainer.className = 'try-container';
+                tryContainer.style.display = 'none'; // Initially hidden
+
+                // Add API Key input if required
+                if (item.requireKey) {
+                    const keyGroup = document.createElement('div');
+                    keyGroup.className = 'input-group';
+
+                    const keyLabel = document.createElement('label');
+                    keyLabel.htmlFor = `api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+                    keyLabel.innerHTML = 'API Key <span style="color: var(--primary); font-weight: normal;">*wajib</span>';
+
+                    const keyInput = document.createElement('input');
+                    keyInput.type = 'text';
+                    keyInput.placeholder = 'Masukkan API key Anda';
+                    keyInput.id = `api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+                    keyInput.name = 'apikey'; // Standard query param name for API key
+                    keyInput.required = true;
+
+                    keyGroup.append(keyLabel, keyInput);
+                    tryContainer.appendChild(keyGroup);
+                }
+
+                // Add parameter inputs
+                if (item.params && Object.keys(item.params).length > 0) {
+                    Object.entries(item.params).forEach(([paramName, paramDesc]) => { // Use paramName and paramDesc
+                        const inputGroup = document.createElement('div');
+                        inputGroup.className = 'input-group';
+
+                        const label = document.createElement('label');
+                        label.htmlFor = `param-${paramName}-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+                         // Display param name and description in label
+                        label.innerHTML = `${paramName} <span style="font-weight: normal; color: var(--text-secondary);">${paramDesc}</span>`;
+
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.placeholder = `Contoh: ${paramDesc}`; // Use desc as placeholder
+                        input.id = `param-${paramName}-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+                        input.name = paramName; // Use actual parameter name
+
+                        // Determine if parameter is required (assuming * in description means required)
+                        if (paramDesc.includes('*')) { // Simple check for required
+                            input.required = true;
+                            label.innerHTML = `${paramName} <span style="color: var(--primary); font-weight: normal;">*wajib</span> <span style="font-weight: normal; color: var(--text-secondary);">${paramDesc.replace('*', '').trim()}</span>`; // Update label text
+                        }
+
+                        inputGroup.append(label, input);
+                        tryContainer.appendChild(inputGroup);
+                    });
+                }
+
+                const buttonGroup = document.createElement('div');
+                buttonGroup.style.marginTop = '15px';
+
+                const executeBtn = document.createElement('button');
+                executeBtn.className = 'execute-btn button'; // Use generic button style
+                executeBtn.textContent = 'Jalankan';
+                executeBtn.addEventListener('click', function() {
+                    executeApi(item, tryContainer);
+                });
+
+                buttonGroup.appendChild(executeBtn);
+                tryContainer.appendChild(buttonGroup);
+
+                return tryContainer;
+            }
+
+            async function executeApi(item, tryContainerElement) {
+                popupTitle.textContent = `Hasil ${item.name}`;
+                popupBody.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <div class="loading"></div>
+                        <p>Memproses request ke ${item.name}...</p>
+                    </div>
+                `;
+                apiPopup.style.display = 'flex';
+
+                try {
+                    let url = item.path.split('?')[0]; // Get base URL without query params
+                    const params = new URLSearchParams();
+
+                    const inputs = tryContainerElement.querySelectorAll('input[type="text"]');
+                    let allRequiredFilled = true;
+
+                    inputs.forEach(input => {
+                        const inputValue = input.value.trim();
+                        if (input.required && !inputValue) {
+                            allRequiredFilled = false;
+                             // Don't throw inside loop, just mark flag
+                        }
+                        if (inputValue) { // Only append if value is not empty
+                            params.append(input.name, inputValue);
+                        }
+                    });
+
+                    if (!allRequiredFilled) {
+                        throw new Error('Semua parameter yang ditandai *wajib* harus diisi.');
+                    }
+
+                    // Construct final URL
+                    let finalUrl = url;
+                    if (params.toString()) {
+                        finalUrl += '?' + params.toString();
+                    }
+
+                     console.log("Executing API:", finalUrl); // Log the URL being executed
+
+                    const response = await fetch(finalUrl);
+
+                    if (!response.ok) {
+                        let errorData;
+                        try {
+                             // Try reading response as text first, then parse JSON if possible
+                             const errorText = await response.text();
+                             try {
+                                 errorData = JSON.parse(errorText);
+                             } catch (parseError) {
+                                 // If JSON parsing fails, use the plain text
+                                 errorData = { message: errorText || `Request gagal dengan status ${response.status} ${response.statusText}` };
+                             }
+                        } catch (readError) {
+                            // Fallback if reading response body fails
+                            errorData = { message: `Request gagal dengan status ${response.status} ${response.statusText}` };
+                        }
+                        // Use the error message from the response data if available, otherwise use a generic one
+                        throw new Error(errorData.message || errorData.error || `Request gagal dengan status ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    popupBody.innerHTML = '';
+                    const pre = document.createElement('pre');
+                    pre.className = 'result-content';
+                    pre.textContent = JSON.stringify(data, null, 2);
+                    popupBody.appendChild(pre);
+
+                } catch (error) {
+                    console.error('Error saat eksekusi API:', error);
+                    popupBody.innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Error:</strong> ${error.message}</p>
+                            <p>Coba lagi atau periksa parameter Anda, termasuk API key jika diperlukan.</p>
+                        </div>
+                    `;
+                }
+            }
+
+            copyResultBtn.addEventListener('click', function() {
+                const pre = popupBody.querySelector('pre.result-content');
+                if (pre && pre.textContent) {
+                    navigator.clipboard.writeText(pre.textContent).then(function() {
+                        copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+                        setTimeout(function() {
+                            copyResultBtn.innerHTML = '<i class="fas fa-copy"></i> Salin';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Gagal menyalin:', err);
+                        showStatusNotification('Gagal menyalin hasil.', 'error');
+                    });
+                } else {
+                    showStatusNotification('Tidak ada hasil untuk disalin.', 'error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
