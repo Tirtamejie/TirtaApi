@@ -1,5 +1,5 @@
 {
-  "name": "Anomaki Apis",
+  "name": "Tirta Apis",
   "version": "v1.0",
   "description": "Rest Api Simple",
   "bannerImage": "https://files.catbox.moe/0a58nf.jpg",
@@ -7,7 +7,7 @@
     "status": "Online!"
   },
   "apiSettings": {
-    "creator": "Xyzan - Anomaki",
+    "creator": "Tirta - Anomaki",
     "globalKey": ["yo"],
     "defaultRequireKey": true
   },
