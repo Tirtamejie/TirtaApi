@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 /**
  * Mencari artikel di Wikipedia Indonesia berdasarkan kata kunci.
@@ -12,15 +12,11 @@ async function wikipediaSearch(query) {
   }
 
   try {
-    // 2. Memanggil API Wikipedia
+    // 2. Memanggil API Wikipedia menggunakan axios
     const apiUrl = `https://id.wikipedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=1&prop=pageimages|extracts&pithumbsize=500&exintro=true&explaintext=true&redirects=1`;
     
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error(`Gagal menghubungi server Wikipedia. Status: ${response.status}`);
-    }
-    
-    const data = await response.json();
+    const response = await axios.get(apiUrl);
+    const data = response.data; // Di axios, data respons ada di dalam properti .data
 
     // 3. Memeriksa dan Memproses Hasil
     if (!data.query || !data.query.pages) {
@@ -50,7 +46,9 @@ async function wikipediaSearch(query) {
 
   } catch (error) {
     // Melempar error agar bisa ditangkap oleh handler utama di index.js
-    throw new Error(error.message);
+    // Jika error dari axios, ambil pesan yang lebih relevan
+    const errorMessage = error.response ? error.response.data.error : error.message;
+    throw new Error(errorMessage);
   }
 }
 
