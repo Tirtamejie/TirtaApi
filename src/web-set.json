@@ -226,10 +226,10 @@
       "name": "Tools",
       "items": [
         {
-          "name": "Beuty Javascript Code",
-          "desc": "Rapikan dan bersihkan codemu",
+          "name": "Beauty Javascript Code",
+          "desc": "Rapikan dan bersihkan kodemu",
           "path": "/tools/beautyjs?code=",
-          "status": "maintenance",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "code": "masukkan codemu"
