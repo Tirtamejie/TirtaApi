@@ -56,7 +56,17 @@
           "params": {
             "query": "Masukkan kata kunci pencarian"
           }
-        }
+        },
+          {
+  "name": "Wikipedia Search",
+  "desc": "Cari artikel dari Wikipedia Bahasa Indonesia",
+  "path": "/search/wikipedia?query=",
+  "status": "ready",
+  "requireKey": false,
+  "params": {
+    "query": "Masukkan kata kunci pencarian"
+  }
+          }
       ]
     },
     {
