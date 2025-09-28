@@ -46,6 +46,16 @@
           "params": {
             "query": "Masukkan Query yang ingin dicari"
           }
+        },
+        {
+          "name": "Tiktok Search",
+          "desc": "Cari video TikTok berdasarkan kata kunci",
+          "path": "/search/tiktoksearch?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "Masukkan kata kunci pencarian"
+          }
         }
       ]
     },
