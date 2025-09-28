@@ -66,6 +66,16 @@
           "params": {
             "query": "Masukkan kata kunci pencarian"
           }
+        },
+        {
+          "name": "What Anime (By Image)",
+          "desc": "Temukan judul anime berdasarkan URL gambar",
+          "path": "/search/whatanime?url=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "url": "URL gambar anime"
+          }
         }
       ]
     },
@@ -256,6 +266,16 @@
             "username": "Username NGL tujuan",
             "message": "Pesan yang ingin dikirim",
             "amount": "Jumlah pesan (Max: 100)"
+          }
+        },
+        {
+          "name": "Free Proxy List",
+          "desc": "Dapatkan daftar proxy gratis (HTTPS).",
+          "path": "/tools/freeproxy?limit=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "limit": "Jumlah proxy (Max: 50, Default: 10)"
           }
         }
       ]
