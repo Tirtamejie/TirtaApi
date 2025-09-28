@@ -234,6 +234,29 @@
           "params": {
             "code": "masukkan codemu"
           }
+        },
+        {
+          "name": "NGL Sender",
+          "desc": "Kirim pesan anonim ke pengguna NGL.",
+          "path": "/tools/ngl?username=&message=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "username": "Username NGL tujuan",
+            "message": "Pesan yang ingin dikirim"
+          }
+        },
+        {
+          "name": "NGL Spammer",
+          "desc": "Kirim pesan spam ke pengguna NGL.",
+          "path": "/tools/spamngl?username=&message=&amount=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "username": "Username NGL tujuan",
+            "message": "Pesan yang ingin dikirim",
+            "amount": "Jumlah pesan (Max: 100)"
+          }
         }
       ]
     }
